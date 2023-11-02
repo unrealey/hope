@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vídeos do YouTube</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .table-container {
+      display: table;
+      width: 100%;
+    }
+    .row {
+      display: table-row;
+    }
+    .cell {
+      display: table-cell;
+      vertical-align: top;
+      padding: 10px;
+    }
+    .video-container {
+      text-align: center;
+    }
+    .video-container a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .button-container {
+      margin-top: 10px;
+    }
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+    .phrase {
+      position: absolute;
+      color: #fff;
+      font-size: 16px;
+    }
+    .sidebar-left,
+    .sidebar-right {
+      width: 10%;
+      height: 100%;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+    }
+    .sidebar-left {
+      left: 0;
+    }
+    .sidebar-right {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay>
+    <source src="https://www.youtube.com/watch?v=nbcXvlEa7Wk" type="audio/mp3">
+    Seu navegador não suporta áudio HTML5.
+  </audio>
+  <div class="sidebar-left"></div>
+  <div class="table-container">
+    <div class="row">
+      <div class="cell">
+        <div class="video-container">
+          <a href="https://www.youtube.com/watch?v=NgsWGfUlwJI">
+            <img src="https://i.ytimg.com/vi/NgsWGfUlwJI/hqdefault.jpg" alt="Vídeo 1">
+            <h2>Glimpse of us</h2>
+          </a>
+          <div class="button-container">
+            <button onclick="mudarTextoBotao(this)">Eu mudei</button>
+          </div>
+        </div>
+      </div>
+      <div class "cell">
+        <div class="video-container">
+          <a href="https://www.youtube.com/watch?v=HBHT4Q-Gprk">
+            <img src="https://i.ytimg.com/vi/HBHT4Q-Gprk/hqdefault.jpg" alt="Vídeo 2">
+            <h2>Eu Queria Dizer Que Te Amo Numa Canção</h2>
+          </a>
+          <div class="button-container">
+            <button onclick="mudarTextoBotao(this)">Quem eu amo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-right"></div>
+
+  <script>
+    function mudarTextoBotao(botao) {
+      if (botao.innerHTML === "Eu mudei") {
+        botao.innerHTML = "sim";
+      } else if (botao.innerHTML === "sim") {
+        botao.innerHTML = "Eu mudei";
+      } else if (botao.innerHTML === "Quem eu amo") {
+        botao.innerHTML = "sophia";
+      } else if (botao.innerHTML === "sophia") {
+        botao.innerHTML = "Quem eu amo";
+      }
+    }
+  </script>
+
+  <script>
+    // Função para criar animações de frases aleatórias
+    function criarAnimacaoFrase() {
+      const frases = ["Eu sei que tudo acabou", "Agora resta saudades", "Em mim você está", "Eu ainda te amo"];
+      const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+
+      const left = Math.random() * (window.innerWidth - 150);
+      const top = Math.random() * (window.innerHeight - 30);
+
+      const fraseElement = document.createElement('div');
+      fraseElement.className = 'phrase';
+      fraseElement.style.left = `${left}px`;
+      fraseElement.style top = `${top}px`;
+      fraseElement.textContent = fraseAleatoria;
+      document.body.appendChild(fraseElement);
+
+      setTimeout(() => {
+        document.body.removeChild(fraseElement);
+      }, 5000); // Remove a frase após 5 segundos
+    }
+
+    // Chama a função de animação de frase a cada 10 segundos
+    setInterval(criarAnimacaoFrase, 10000);
+  </script>
+</body>
+</html>
+
